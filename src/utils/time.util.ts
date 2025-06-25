@@ -16,3 +16,16 @@ export function getTotalDuration(horaFin: string, horaInicio: string): string {
   
   return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
 }
+
+export function formatDuration(duration: string): string {
+
+  const [hoursStr, minsStr] = duration.split(":");
+  const hours = parseInt(hoursStr, 10);
+  const mins = parseInt(minsStr, 10);
+  const totalMinutes = hours * 60 + mins;
+
+  // Formatear la duración
+  if (hours === 0) return `${mins} min`;
+  if (mins === 0) return `${hours} hora${hours > 1 ? "s" : ""}`;
+  return `${hours} hora${hours > 1 ? "s" : ""} y ${mins} min`;
+}

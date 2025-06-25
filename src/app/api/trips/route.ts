@@ -29,8 +29,6 @@ export async function POST(request: NextRequest) {
   now.setMinutes(now.getMinutes() + now.getTimezoneOffset() + buenosAiresOffset);
   const currentDate = now.toISOString().split('T')[0];
   const currentTime = now.toTimeString().substring(0, 5); // "HH:MM"
-  console.log("fecha : " + currentDate)
-  console.log("hora : " + currentTime)
   
   const session = await driver.session();
  try {
