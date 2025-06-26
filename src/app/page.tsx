@@ -62,6 +62,7 @@ export default function Home() {
   const getStops = async () => {
     try {
       const res = await stopService.getAllStops();
+      console.log("stops fetched");
       setStops(res);
     } catch (error) {
       console.log(error);
@@ -137,7 +138,9 @@ export default function Home() {
       >
         Planificar
       </Button>
-      <Typography variant="h6" sx={{paddingTop: "20px"}}>Busquedas recientes</Typography>
+      <Typography variant="body2" sx={{ paddingTop: "20px" }}>
+        Busquedas recientes
+      </Typography>
       <ListRecentItem />
 
       <Modal open={open} onClose={() => setOpen(false)}>

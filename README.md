@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚍 Trip-planner-Demo (Next.js + Leaflet.js)
 
-## Getting Started
+A visual trip planner app that allows users to search for routes between an origin and a destination using direct or transfer connections.
 
-First, run the development server:
+## Technologies and Libraries
+* Next.js – React framework for server-side rendering and static site generation
+* Neo4j – Graph database for efficient route calculations
+* Axios – For HTTP requests
+* Zustand – Lightweight state management
+* Material UI – UI components
+* Leaflet.js – Interactive maps
+
+⚙️ Environment Setup
+Create a .env.local file in the root directory and configure the following environment variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=your_password
+NEXT_PUBLIC_URI=http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Running the Development Server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Install dependencies:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Start the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+<p align="center"> <strong>🏠 Home Page</strong><br> <img src="./public/home.png" width="100%" alt="Home Page Screenshot"><br><br>
+<strong>🔍 Search Origin and Destination</strong><br>
+<img src="./public/filter.png" width="100%" alt="Search Screenshot"><br><br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<strong>🟢 Direct Route (No Transfer)</strong><br>
+<img src="./public/direct.png" width="100%" alt="Direct Route Screenshot"><br><br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<strong>🟡 Route with Transfer</strong><br>
+<img src="./public/trasbordo.png" width="100%" alt="Transfer Route Screenshot"><br><br>
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</p>

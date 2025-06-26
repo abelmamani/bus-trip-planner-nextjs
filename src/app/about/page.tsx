@@ -27,13 +27,15 @@ const About = () => {
   const origin = useStopStore((state) => state.origin);
   const destination = useStopStore((state) => state.destination);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
+  const setTransfer = useStopStore((state) => state.setTransfer);
+  const clearTransfer = useStopStore((state) => state.clearTransfer);
   const setFromShapes = useShapeStore((state) => state.setFromShapes);
   const setToShapes = useShapeStore((state) => state.setToShapes);
   const clearShapes = useShapeStore((state) => state.clearShapes);
 
   const handleBack = () => {
     clearShapes();
+    clearTransfer();
     router.back();
   };
 
@@ -78,10 +80,11 @@ const About = () => {
       console.error("Error loading shapes", err);
     }
   };
-  const getShapes = async (option: TripOption, index: number) => {
+  const getDetail = async (option: TripOption, index: number) => {
     setSelectedIndex(index);
     await fetchShape(option.routeName, option.fromShape, option.toShape);
     if (option.type === TripOptionType.TRANSFER && option.transferOption) {
+      setTransfer(option.transferOption.transferStop);
       await fetchShape2(
         option.transferOption.routeName,
         option.transferOption?.fromShape,
@@ -118,8 +121,8 @@ const About = () => {
       </Box>
 
       {!isLoading && tripOptions.length === 0 ? (
-        <Typography variant="body1" color="text.secondary">
-          No se encontraron opciones disponibles.
+        <Typography variant="body2" color="text.secondary">
+          No se encontraron viajes disponibles.
         </Typography>
       ) : (
         <List
@@ -167,7 +170,7 @@ const About = () => {
                   </Typography>
                   <Box sx={{ mt: 1 }}>
                     <Button
-                      onClick={() => getShapes(option, index)}
+                      onClick={() => getDetail(option, index)}
                       variant="contained"
                       size="small"
                       disabled={selectedIndex === index}

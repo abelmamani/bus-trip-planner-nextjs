@@ -17,7 +17,7 @@ export const useItemStore = create<RecentItemState>((set, get) => ({
   recentItems: loadInitialState(),
   addItem: (item: RecentItem) => {
     const existing = get().recentItems;
-    let updated = [...existing, item];
+    let updated = [item, ...existing];
 
     localStorage.setItem('history', JSON.stringify(updated));
     set({ recentItems: updated });
